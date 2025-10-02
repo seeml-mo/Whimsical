@@ -1,0 +1,9 @@
+body{
+    background-image: url("./images/Hiyori_Tomoe_4.jpg");
+    background-position: center;
+    background-position-y:top;
+}
+p {
+  color: greenyellow;
+  text-align: center;
+}
