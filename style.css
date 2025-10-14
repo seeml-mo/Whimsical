@@ -1,7 +1,8 @@
 .container {
   display: flex;
   min-height: 100vh;
-  justify-content: center; 
+  padding-left: 20px;
+  box-sizing: border-box;
 }
 .sidebar{
   margin-left: -20px;
@@ -15,15 +16,24 @@ nav {
     padding-top: 20px;
     height: 100vh;
     box-sizing: border-box;
+    justify-content: flex-start !important;
+    align-items: center !important;
   }
 
   .avatar {
-    width: 100px;
-    height: 100px;
+    width: 120px;
+    height: 120px;
     border-radius: 10px;
     object-fit: cover;
     object-position: top center;
-    margin-bottom: 30px;    
+    margin-top: 20px;
+    margin-bottom: 10px;
+  }
+
+  nav .avatar:hover{
+    transform: translateX(10%);
+    opacity: 0.5;
+    transition: transform 1s, opacity 1s;
   }
 
   nav ul {
@@ -31,6 +41,8 @@ nav {
     padding: 0;
     margin: 0;
     width: 100%;
+    margin-top: 20px;
+    flex-grow: 0;
   }
 
   nav li {
@@ -54,6 +66,21 @@ nav {
     margin-bottom: 5px;
   }
 
+  nav a {
+  scroll-behavior: smooth;
+  }
+
+  @media (max-height: 600px) {
+    nav {
+        padding-top: 10px;
+    }
+    .avatar {
+        width: 80px;
+        height: 80px;
+        margin-bottom: 20px;
+    }
+  }
+
   nav a:hover,
   nav a.active {
     background-color: #70b312;
@@ -63,9 +90,10 @@ nav {
   flex: 1;
   padding: 20px;
 }
-.content > article {
-  max-width: 800px;
-  width: 100%;
+.bottom_link{
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
 }
 
 header{
