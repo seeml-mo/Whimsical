@@ -5,6 +5,8 @@
     <link rel="stylesheet" href="./style.css">
     <title>iihiyori_sunshine</title>
   </head>
+  <script src="comment.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     
   <body>
       <p class="bottom_link"> Click to know more about
@@ -24,7 +26,7 @@
                 <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-3.33 0-10 1.67-10 5v3h20v-3c0-3.33-6.67-5-10-5z"/></svg>
                 ABOUT
                 </a></li>
-                <li><a href="#show" aria-label="Show">
+                <li><a href="#" id="show-tasks-btn" aria-label="Show">
                 <!-- Eye icon (SVG) -->
                 <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor"><path d="M12 6a9.77 9.77 0 0 1 8.485 4.485 9.77 9.77 0 0 1 0 8.485A9.77 9.77 0 0 1 12 22a9.77 9.77 0 0 1-8.485-4.485 9.77 9.77 0 0 1 0-8.485A9.77 9.77 0 0 1 12 6zm0 2a5 5 0 1 0 0 10 5 5 0 0 0 0-10z"/></svg>
                 SHOW
@@ -36,6 +38,8 @@
                 </a></li>
               </ul>
         </nav>
+        <div id="show" class="bar" style="display:none;">
+        </div>
         <article class="content"></article>
       </div>
     <script>
@@ -69,14 +73,6 @@
               </tbody>
             </table>
           </section>`,
-        show: `
-          <header>
-            <h1>Show</h1>
-            <p>Details about the show.</p>
-          </header>
-          <section>
-            <p>Information about the show will appear here.</p>
-          </section>`,
         comment: `
           <header>
             <h1>Comments</h1>
@@ -84,6 +80,54 @@
           </header>
           <section>
             <p>Comment section content.</p>
+            <body>
+          <div class="container-grid-container">
+            <div id="comments"> 
+              <div id="c1001" class="d-flex"> <!-- flex layout -->
+                <div class="flex-shrink-0"> <!-- disallow div to shrink when page gets smaller -->
+                  <svg height="100" width="100">
+                    <circle cx="50" cy="50" r="40" fill="green">
+                  </svg>
+                </div>
+                <div class="flex-grow-1"> <!-- allow div to grow and take up all space -->
+                  <h5>seeml-mo@link.cuhk.edu.hk</h5>
+                  <p>Ensemble Stars!!</p>
+                </div>
+              </div>
+            </div>
+            <form>
+              <div class="mb-3">
+                <label for="new-email" class="form-label">Email address</label>
+                <input type="email" class="form-control" id="new-email" placeholder="name@example.com">
+              </div>
+              <div class="mb-3">
+                <label for="new-comment" class="form-label">Comment</label>
+                <textarea class="form-control" id="new-comment" rows="3" placeholder="Ensemble Stars!!"></textarea>
+              </div>
+              <div class="form-check">
+                  <input class="form-check-input" type="radio" name="new-color" id="new-color-red" value="red">
+                  <label class="form-check-label" for="new-color-red">Red</label>
+              </div>
+              <div class="form-check">
+                  <input class="form-check-input" type="radio" name="new-color" id="new-color-green" value="green">
+                  <label class="form-check-label" for="new-color-green">Green</label>
+              </div>
+              <div class="form-check">
+                  <input class="form-check-input" type="radio" name="new-color" id="new-color-yellow" value="yellow">
+                  <label class="form-check-label" for="new-color-yellow">Yellow</label>
+              </div>
+              <div class="form-check">
+                  <input class="form-check-input" type="radio" name="new-color" id="new-color-blue" value="blue">
+                  <label class="form-check-label" for="new-color-blue">Blue</label>
+              </div>
+                <!-- TODO: Add more choices here with div/input/label -->
+              <button type="button" class="btn btn-primary" onclick="processform();">Add comment</button>
+              <button type="button" class="btn btn-primary" onclick="loadfile()">Load File</button>
+              <button type="button" class="btn btn-primary" onclick="savefile()">Save File</button>
+            </form>
+            <div id="comments-container">
+              <!-- 新增的评论会出现在这里 -->
+            </div>
           </section>`
       };
 
@@ -111,4 +155,3 @@
     </script>
   </body>
 </html>
-
