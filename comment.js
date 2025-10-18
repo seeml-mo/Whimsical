@@ -242,3 +242,45 @@ function showTimeModal(){
     const timeModal = new bootstrap.Modal(document.getElementById('timeModal'));
     timeModal.show();
 }
+
+document.addEventListener('DOMContentLoaded', function() {
+    const tabHeaders = document.querySelectorAll('.tab-header');
+    
+    tabHeaders.forEach(header => {
+        header.addEventListener('click', function() {
+            document.querySelectorAll('.tab-header').forEach(h => h.classList.remove('active'));
+            document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+            
+            this.classList.add('active');
+            const tabId = this.getAttribute('data-tab');
+            document.getElementById(tabId).classList.add('active');
+        });
+    });
+});
+
+// imagescroller
+document.addEventListener('DOMContentLoaded', function() {
+    const tabHeaders = document.querySelector('.tab-headers');
+    const scrollLeftBtn = document.querySelector('.scroll-left');
+    const scrollRightBtn = document.querySelector('.scroll-right');
+    
+    scrollRightBtn.addEventListener('click', function() {
+        tabHeaders.scrollBy({ left: 200, behavior: 'smooth' });
+    });
+    
+    scrollLeftBtn.addEventListener('click', function() {
+        tabHeaders.scrollBy({ left: -200, behavior: 'smooth' });
+    });
+    
+    const tabHeaderButtons = document.querySelectorAll('.tab-header');
+    tabHeaderButtons.forEach(header => {
+        header.addEventListener('click', function() {
+            document.querySelectorAll('.tab-header').forEach(h => h.classList.remove('active'));
+            document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+            
+            this.classList.add('active');
+            const tabId = this.getAttribute('data-tab');
+            document.getElementById(tabId).classList.add('active');
+        });
+    });
+});

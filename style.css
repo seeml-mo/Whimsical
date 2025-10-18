@@ -92,6 +92,23 @@ nav {
     background-color: #70b312;
 }
 
+section h1,p{
+  color: white;
+  opacity: 1;
+}
+
+table {
+  color: white; 
+}
+
+thead {
+  color: white; 
+}
+
+td, th {
+  border-color: #dee2e6; 
+}
+
 .content{
   flex: 1;
   padding: 20px;
@@ -102,20 +119,39 @@ nav {
     right: 20px;
 }
 
-header{
-    color: white;
+header p,h1{
+  opacity: 0;
 }
+
 body{
     background-image: url("./images/1.jpg");
-    background-position: top;
+    background-attachment: fixed;
+    background-position: center;
     background-repeat: no-repeat;
     background-blend-mode: lighten;
     background-color: rgb(15, 32, 2);
+    overflow-y: auto;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    display: grid;
+    grid-template-rows: 1fr auto;
+}
+
+body h2{
+  color:white;
+  text-align: center;
+}
+
+span p{
+  color: white;
 }
 
 header{
-  background-image: url("./images/logo-eden.png");
+  background-image: url("./images/Hiyori_Tomoe_Signature.webp");
   background-size: contain;
+  background-repeat: no-repeat;
+  transform: translateX(5%);
 }
 
 section{
@@ -150,7 +186,7 @@ form label{
 
 form {
     overflow-y: auto;
-    background: rgba(255,0,0,0.1); /* 调试用 */
+    background: rgba(255,0,0,0.1); 
 }
 
 .bar {
@@ -224,4 +260,190 @@ form {
 
 .modal-content {
     color: #000;
+}
+
+footer {
+    color: white;
+    grid-row: 2;
+}
+
+.about-content-wrapper {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+}
+
+.about-text-content {
+    flex: 1;
+    min-width: 0; 
+}
+
+.tab-scroll-container {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 15px;
+}
+
+.tab-headers {
+    display: flex;
+    gap: 8px;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    flex: 1;
+    padding: 5px 0;
+}
+
+.tab-headers::-webkit-scrollbar {
+    display: none;
+}
+
+.tab-headers {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.scroll-btn {
+    padding: 6px 10px;
+    border: none; 
+    background: transparent; 
+    border-radius: 4px;
+    cursor: pointer;
+    flex-shrink: 0;
+    color: #666; 
+    font-size: 16px;
+}
+
+.scroll-btn:hover {
+    background: rgba(0, 0, 0, 0.05); 
+}
+
+.tab-header {
+    padding: 8px 12px;
+    border: none; 
+    background: transparent; 
+    border-radius: 4px;
+    cursor: pointer;
+    white-space: nowrap;
+    flex-shrink: 0;
+    font-size: 0.9em;
+    transition: all 0.3s ease;
+    color: #9e9e9e; 
+}
+
+.tab-header.active {
+    background: transparent; 
+    color: #007bff; 
+    font-weight: 600; 
+}
+
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+.tab-content img {
+    max-width: 100%;
+    max-height: 400px;
+    width: auto;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    border-radius: 6px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.image-sidebar {
+    width: 300px; 
+    flex-shrink: 0; 
+    background: transparent;
+    padding: 15px;
+}
+
+@media (max-width: 768px) {
+    .image-sidebar {
+        width: 100%;
+        order: -1; 
+    }
+    
+    .about-content-wrapper {
+        flex-direction: column;
+    }
+    
+    .tab-content img {
+        max-height: 300px;
+    }
+    
+    .tab-headers {
+        gap: 6px;
+    }
+    
+    .tab-header {
+        padding: 6px 10px;
+        font-size: 0.85em;
+    }
+}
+
+.pi-horizontal-group {
+    width: 100%;
+    margin-top: 20px;
+    border-collapse: collapse;
+}
+
+.pi-horizontal-group td {
+    padding: 10px;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.pi-horizontal-group img {
+    max-width: 100%;
+    height: auto;
+}
+
+.character-quote-wrapper {
+    border: 2px solid #ffffff;
+    border-radius: 10px;
+    padding: 70px 30px 30px;
+    margin: 15px 0 0 15px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(5px);
+    position: relative;
+}
+
+.character-quote-wrapper::before,
+.character-quote-wrapper::after {
+    font-size: 48px;
+    color: #ffffff;
+    position: absolute;
+    font-family: serif;
+    opacity: 0.7;
+}
+
+.character-quote-wrapper::before {
+    content: '“';
+    top: 10px;
+    left: 20px;
+}
+
+.character-quote-wrapper::after {
+    content: '”';
+    bottom: 10px;
+    right: 20px;
+}
+
+.character-quote-wrapper blockquote {
+    margin: 0;
+    padding: 0;
+}
+
+.character-quote-wrapper blockquote p {
+    margin: 0 15px 15px 15px;
+    color: #ffffff;
+    line-height: 1.6;
+    font-size: 1.1em;
+    padding: 0 20px 15px;
 }

@@ -7,18 +7,15 @@
   </head>
   <script src="comment.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    
-  <body>
-   <h1>TS 测试页面</h1>
+  <script src="ts_test.js"></script>   
 
-  <!-- 引入编译后的JavaScript -->
-  <script src="ts_test.js"></script>
+  <body>
       <p class="bottom_link"> Click to know more about
         <a href="https://ensemble-stars.jp/characters/tomoe_hiyori"> Tomoe Hiyori</a> 
       </p>
       <div class="container">
         <nav class="navbar navbar-expand-lg sidebar">
-          <img class="avatar" src="./images/Hiyori_Tomoe_4.jpg" />
+          <img class="avatar" src="./images/Hiyori_Tomoe_4.png" />
               <ul>
                 <li><a href="#home" aria-label="Home">
                 <!-- Home icon (SVG) -->
@@ -54,28 +51,153 @@
       const routes = {
         home: `
           <header>
-            <h1>Home Page</h1>
-            <p>Welcome to the homepage.</p>
+            <h1>Homepage</h1>
+            <p>      Welcome to the Garden of EDEN</p>
           </header>
           <section>
-            <h1>Intro</h1>
-            <p>This is the home section content.</p>
+            <h2>Tomoe Hiyori</h2>
+            <div class="about-content-wrapper">
+            <div class="about-text-content">
+                  <p>A noble son from Tomoe Foundation. He works as one half of Eve alongside Jun Sazanami. While his personality is bright and sociable, he is good at pulling others into his pace. He may have a frivolous side to him, but he believes in saturating his methods of communication with love. With a clear and sweet singing voice, Hiyori's performances are elegant and beautiful.</p>
+                  <p>Hiyori is a member of Eden at COSMIC PRODUCTION. His purpose in life is to become someone who anyone may love, one who can spread smiles and love all over the world.</p>
+                        <div class="character-quote-wrapper">
+                  <blockquote>
+                      <p>I'm Hiyori Tomoe from Eden and Eve at COSMIC PRODUCTION! Well, there's no way you don't know who I am...♪ Bringing dazzling smiles and love to all my fans is my greatest happiness and a given as an idol. I promise to provide anyone who comes to see me with the best day ever. Yes, yes, that's a Good Hiyori☆</p>
+                  </blockquote>
+                  <cite class="character-quote-audio character-quote-audio-self">
+                      <span class="audio-button character-audio">
+                          <span class="mw-default-size">
+                              <audio src="./images/voices/Hiyori_Tomoe_Voice_Sample_1_ES.ogg" width="180" style="max-width: 100%; width: 180px;" controls>
+                                  Your browser does not support the audio element.
+                              </audio>
+                          </span>
+                      </span>
+                  </cite>
+              </div>
+                        <div class="character-quote-wrapper">
+                <blockquote>
+                    <p>Ohii-san's introduction, huh. Ohii-san and I met at the idol training school, Reimei Academy, and he's the one who picked me up and saved me from rotting away in a garbage dump. He's free-spirited and prideful, but if it weren't for him, I wouldn't be here... when I think about it, his bits of selfishness can be kinda cute. Haha, saying that might make him angry at me though♪</p>
+                </blockquote>
+                <cite class="character-quote-audio character-quote-audio-friend">
+                    <span class="audio-button character-audio">
+                        <span class="mw-default-size">
+                            <audio src="./images/voices/Jun_Sazanami_Voice_Sample_2_ES.ogg" width="180" style="max-width: 100%; width: 180px;" controls>
+                                Your browser does not support the audio element.
+                            </audio>
+                        </span>
+                    </span>
+                    <span class="character-audio-name">Jun</span>
+                    <span>
+                        <img src="./images/Jun_ES.png" width="26" height="26" alt="Jun Sazanami" />
+                    </span>
+                </cite>
+            </div>
+
+         </div>
+
+<div class="image-sidebar">
+    <div class="image-tabs">
+  <div class="image-tabs">
+    <div class="tab-scroll-container">
+      <button class="scroll-btn scroll-left"><</button>
+    <!-- tab div -->
+    <div class="tab-headers">
+        <button class="tab-header active" data-tab="current">Current</button>
+        <button class="tab-header" data-tab="casual1">Casual 1</button>
+        <button class="tab-header" data-tab="casual2">Casual 2</button>
+        <button class="tab-header" data-tab="casual3">Casual 3</button>
+        <button class="tab-header" data-tab="casual4">Casual 4</button>
+        <button class="tab-header" data-tab="child">Child</button>
+        <button class="tab-header" data-tab="bkubstars">Bkubstars</button>
+    </div>
+
+    <button class="scroll-btn scroll-right">></button>
+  </div>
+    
+    <!-- tab content -->
+    <div class="tab-contents">
+        <!-- Current -->
+        <div class="tab-content active" id="current">
+            <figure class="pi-item pi-image">
+                <img src="./images/Hiyori_Tomoe_4.png" class="image-thumbnail" alt="Current" />
+            </figure>
+        </div>
+        
+        <!-- Casual 1 -->
+        <div class="tab-content" id="casual1">
+            <figure class="pi-item pi-image">
+                <img src="./images/(The_Lively_Room)_Hiyori_Tomoe_Full_Render_Bloomed.png" class="image-thumbnail" alt="Casual 1" />
+            </figure>
+        </div>
+        
+        <!-- Casual 2 -->
+        <div class="tab-content" id="casual2">
+            <figure class="pi-item pi-image">
+                <img src="./images/(Balance_Game)_Hiyori_Tomoe_Full_Render.png" class="image-thumbnail" alt="Casual 2" />
+            </figure>
+        </div>
+        
+        <!-- Casual 3 -->
+        <div class="tab-content" id="casual3">
+            <figure class="pi-item pi-image">
+                <img src="./images/(Swept Droplet) Hiyori Tomoe Full Render.png" class="image-thumbnail" alt="Casual 3" />
+            </figure>
+        </div>
+        
+        <!-- Casual 4 -->
+        <div class="tab-content" id="casual4">
+            <figure class="pi-item pi-image">
+                <img src="./images/Hiyori Tomoe Casual 2 (Autumn-Winter) Outfit.png" class="image-thumbnail" alt="Casual 4" />
+            </figure>
+        </div>
+        
+        <!-- Child -->
+        <div class="tab-content" id="child">
+            <figure class="pi-item pi-image">
+                <img src="./images/(The Teller of Mythos) Hiyori Tomoe Full Render.png" class="image-thumbnail" alt="Child" />
+            </figure>
+        </div>
+        
+        <!-- Bkubstars -->
+        <div class="tab-content" id="bkubstars">
+            <figure class="pi-item pi-image">
+                <img src="./images/Hiyori Tomoe Bkubstars.png" class="image-thumbnail" alt="Bkubstars" />
+            </figure>
+        </div>
+    </div>
+  </div>
+</div>
+</div>
+</div>
           </section>`,
         about: `
           <header>
             <h1>About Us</h1>
-            <p>Posted by John Doe</p>
-            <p>Some additional information about us.</p>
+            <p>Good hiyori!!!</p>
           </header>
           <section>
-            <h1>Team</h1>
-            <table>
-              <tbody>
-                <tr><th>Organization</th><th>Status</th></tr>
-                <tr><td>Eden</td><td>Second-in-command</td></tr>
-                <tr><td>Eve</td><td>Leader</td></tr>
-              </tbody>
-            </table>
+            <h1>Relationship</h1>
+                        <table class="pi-horizontal-group">
+    <tbody>
+        <tr>
+            <td data-source="Agency">
+                <img src="./images/COSMIC_PRODUCTION_Logo.webp" alt="COSMIC PRODUCTION" width="50" height="24" />
+            </td>
+            <td data-source="Unit">
+                <img src="./images/logo-eden.png" alt="Eden" width="70" height="54" />
+                <br /><br />
+                <img src="./images/Eve_logo_cropped.webp" alt="Eve" width="70" height="54" />
+            </td>
+            <td data-source="Name">
+                <!-- 语音文件保留原链接或也改为本地 -->
+                <audio src="./voices/Hiyori_Tomoe_Voice_Sample_1_ES.ogg" controls></audio>
+                <audio src="./voices/Hiyori_Tomoe_Voice_Sample_2_ES.ogg" controls></audio>
+            </td>
+        </tr>
+    </tbody>
+</table>
+        
+
           </section>`,
         comment: `
           <header>
@@ -132,8 +254,11 @@
             <div id="comments-container">
               <!-- 新增的评论会出现在这里 -->
             </div>
-          </section>`
+          </section>
+          <footer id="duration-timer-footer"></footer>`
       };
+
+      let durationTimerInstance = null;
 
       function render() {
         let hash = location.hash.slice(1) || 'home'; 
@@ -150,7 +275,23 @@
             link.classList.remove('active');
           }
         });
-      }
+
+           if (hash === 'comment') {
+              const footer = document.getElementById('duration-timer-footer');
+              if (footer) {
+                if (durationTimerInstance) {
+                  durationTimerInstance.stop();
+                }
+                durationTimerInstance = new DurationTimer(footer);
+                durationTimerInstance.start();
+              }
+            } else {
+              if (durationTimerInstance) {
+                durationTimerInstance.stop();
+                durationTimerInstance = null;
+              }
+            }
+        }
 
       window.addEventListener('hashchange', render);
 
