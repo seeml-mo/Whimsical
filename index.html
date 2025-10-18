@@ -13,6 +13,7 @@
       <p class="bottom_link"> Click to know more about
         <a href="https://ensemble-stars.jp/characters/tomoe_hiyori"> Tomoe Hiyori</a> 
       </p>
+    <main>
       <div class="container">
         <nav class="navbar navbar-expand-lg sidebar">
           <img class="avatar" src="./images/Hiyori_Tomoe_4.png" />
@@ -43,6 +44,7 @@
         </div>
         <article class="content"></article>
       </div>
+    </main>
     <script>
     (function() {
       const navLinks = document.querySelectorAll('nav.sidebar ul li a');
@@ -55,16 +57,18 @@
             <p>      Welcome to the Garden of EDEN</p>
           </header>
           <section>
-            <h2>Tomoe Hiyori</h2>
+
             <div class="about-content-wrapper">
-            <div class="about-text-content">
-                  <p>A noble son from Tomoe Foundation. He works as one half of Eve alongside Jun Sazanami. While his personality is bright and sociable, he is good at pulling others into his pace. He may have a frivolous side to him, but he believes in saturating his methods of communication with love. With a clear and sweet singing voice, Hiyori's performances are elegant and beautiful.</p>
-                  <p>Hiyori is a member of Eden at COSMIC PRODUCTION. His purpose in life is to become someone who anyone may love, one who can spread smiles and love all over the world.</p>
+            <div class="row">  <!-- add Bootstrap row -->
+            <div class="col-md-8">  
+                <div class="about-text-content">
+
                         <div class="character-quote-wrapper">
                   <blockquote>
                       <p>I'm Hiyori Tomoe from Eden and Eve at COSMIC PRODUCTION! Well, there's no way you don't know who I am...♪ Bringing dazzling smiles and love to all my fans is my greatest happiness and a given as an idol. I promise to provide anyone who comes to see me with the best day ever. Yes, yes, that's a Good Hiyori☆</p>
                   </blockquote>
                   <cite class="character-quote-audio character-quote-audio-self">
+                    <aside>
                       <span class="audio-button character-audio">
                           <span class="mw-default-size">
                               <audio src="./images/voices/Hiyori_Tomoe_Voice_Sample_1_ES.ogg" width="180" style="max-width: 100%; width: 180px;" controls>
@@ -72,6 +76,11 @@
                               </audio>
                           </span>
                       </span>
+                    </aside>
+                       <span class="character-audio-name">Hiyori</span>
+                    <span>
+                        <img src="./images/Hiyori_Tomoe_4.png" alt="Hiyori Tomoe" />
+                    </span>
                   </cite>
               </div>
                         <div class="character-quote-wrapper">
@@ -79,6 +88,7 @@
                     <p>Ohii-san's introduction, huh. Ohii-san and I met at the idol training school, Reimei Academy, and he's the one who picked me up and saved me from rotting away in a garbage dump. He's free-spirited and prideful, but if it weren't for him, I wouldn't be here... when I think about it, his bits of selfishness can be kinda cute. Haha, saying that might make him angry at me though♪</p>
                 </blockquote>
                 <cite class="character-quote-audio character-quote-audio-friend">
+                  <aside>  
                     <span class="audio-button character-audio">
                         <span class="mw-default-size">
                             <audio src="./images/voices/Jun_Sazanami_Voice_Sample_2_ES.ogg" width="180" style="max-width: 100%; width: 180px;" controls>
@@ -86,15 +96,17 @@
                             </audio>
                         </span>
                     </span>
-                    <span class="character-audio-name">Jun</span>
+                  </aside>
+                    <span class="character-audio-name"><a href="https://ensemble-stars.jp/characters/sazanami_jun">Jun</a></span>
                     <span>
-                        <img src="./images/Jun_ES.png" width="26" height="26" alt="Jun Sazanami" />
+                        <img src="./images/Jun_ES.png" alt="Jun Sazanami" />
                     </span>
                 </cite>
             </div>
+          </div>
+        </div>
 
-         </div>
-
+<div class="col-md-4"> 
 <div class="image-sidebar">
     <div class="image-tabs">
   <div class="image-tabs">
@@ -107,7 +119,7 @@
         <button class="tab-header" data-tab="casual2">Casual 2</button>
         <button class="tab-header" data-tab="casual3">Casual 3</button>
         <button class="tab-header" data-tab="casual4">Casual 4</button>
-        <button class="tab-header" data-tab="child">Child</button>
+        <button class="tab-header" data-tab="child">Childhood</button>
         <button class="tab-header" data-tab="bkubstars">Bkubstars</button>
     </div>
 
@@ -166,9 +178,12 @@
         </div>
     </div>
   </div>
-</div>
-</div>
-</div>
+  </div>
+  </div>
+  </div>
+  </div>
+  </div>
+  </div>
           </section>`,
         about: `
           <header>
@@ -177,27 +192,31 @@
           </header>
           <section>
             <h1>Relationship</h1>
-                        <table class="pi-horizontal-group">
-    <tbody>
+          
+    <table class="agency-unit-table">
+      <thead>
         <tr>
-            <td data-source="Agency">
-                <img src="./images/COSMIC_PRODUCTION_Logo.webp" alt="COSMIC PRODUCTION" width="50" height="24" />
-            </td>
-            <td data-source="Unit">
-                <img src="./images/logo-eden.png" alt="Eden" width="70" height="54" />
-                <br /><br />
-                <img src="./images/Eve_logo_cropped.webp" alt="Eve" width="70" height="54" />
-            </td>
-            <td data-source="Name">
-                <!-- 语音文件保留原链接或也改为本地 -->
-                <audio src="./voices/Hiyori_Tomoe_Voice_Sample_1_ES.ogg" controls></audio>
-                <audio src="./voices/Hiyori_Tomoe_Voice_Sample_2_ES.ogg" controls></audio>
-            </td>
+          <th>Agency</th>
+          <th class="divider-column"></th>
+          <th>Unit</th>
         </tr>
-    </tbody>
-</table>
-        
-
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <img src="./images/COSMIC_PRODUCTION_Logo.webp" alt="COSMIC PRODUCTION" />
+          </td>
+          <td class="divider-column"></td>
+          <td>
+            <div class="unit-cell">
+              <img src="./images/Eden_ES_Logo.webp" alt="Eden" />
+              <div class="unit-divider"></div>
+              <img src="./images/Eve_logo_cropped.webp" alt="Eve" />
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
           </section>`,
         comment: `
           <header>
@@ -252,7 +271,7 @@
               <button type="button" class="btn btn-primary" onclick="savefile()">Save File</button>
             </form>
             <div id="comments-container">
-              <!-- 新增的评论会出现在这里 -->
+              <!-- New comments will be shown here -->
             </div>
           </section>
           <footer id="duration-timer-footer"></footer>`
@@ -267,6 +286,10 @@
         }
 
         contentArea.innerHTML = routes[hash];
+
+      setTimeout(() => {
+        initAudioPlayers(); 
+      }, 100);
 
         navLinks.forEach(link => {
           if (link.getAttribute('href') === '#' + hash) {

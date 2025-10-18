@@ -115,7 +115,7 @@ td, th {
 }
 .bottom_link{
     position: fixed;
-    bottom: 20px;
+    bottom: 10px;
     right: 20px;
 }
 
@@ -133,6 +133,7 @@ body{
     overflow-y: auto;
     margin: 0;
     padding: 0;
+    margin-bottom: 10px;
     min-height: 100vh;
     display: grid;
     grid-template-rows: 1fr auto;
@@ -156,7 +157,7 @@ header{
 
 section{
   background-color: rgba(0, 21, 3, 0.8);
-  max-height: 80vh;
+  max-height: 85vh;
   overflow-y: auto;
   overflow-x: hidden; 
 }
@@ -217,6 +218,7 @@ form {
     transition: all 0.3s ease;
     min-width: 150px;
     text-align: center;
+    transform: translateX(-30px);
 }
 
 .task-btn:hover {
@@ -393,17 +395,6 @@ footer {
     border-collapse: collapse;
 }
 
-.pi-horizontal-group td {
-    padding: 10px;
-    text-align: center;
-    vertical-align: middle;
-}
-
-.pi-horizontal-group img {
-    max-width: 100%;
-    height: auto;
-}
-
 .character-quote-wrapper {
     border: 2px solid #ffffff;
     border-radius: 10px;
@@ -431,8 +422,51 @@ footer {
 
 .character-quote-wrapper::after {
     content: '”';
-    bottom: 10px;
-    right: 20px;
+    bottom: 15px;
+    right: 25px;
+    z-index: 2;
+}
+
+.character-quote-audio img,
+.character-quote-audio-friend img {
+    width: 60px;
+    height: 70px;
+    border-radius: 6px; 
+    object-fit: cover;
+    object-position: top center;
+    vertical-align: middle;
+    transform: scale(1.5) translateY(8px);
+    margin-left: -1px;
+    order: 1;
+    z-index: 2;
+    pointer-events: none;
+}
+
+.character-quote-audio-friend img {
+  transform: scale(1.7) translateX(-12px) translateY(3px);
+}
+
+
+.character-quote-audio-friend {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.character-audio-name {
+    color: #ffffff;
+    margin-left: 15px;
+    position: relative;
+    transform: translateY(-5px);
+    order: 2;
+}
+
+.character-quote-audio,
+.character-quote-audio-friend {
+    display: flex;
+    align-items: center;
+    position: relative;
+
 }
 
 .character-quote-wrapper blockquote {
@@ -446,4 +480,93 @@ footer {
     line-height: 1.6;
     font-size: 1.1em;
     padding: 0 20px 15px;
+}
+
+.agency-unit-table {
+    width: 97%;
+    border: 2px solid #ffffff;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px); 
+    -webkit-backdrop-filter: blur(15px); 
+    border-collapse: collapse;
+    margin: 30px 15px;
+}
+
+.agency-unit-table th {
+    color: #ffffff;
+    font-size: 1.2em;
+    font-weight: bold;
+    padding: 15px;
+    border-bottom: 1px solid #ffffff;
+}
+
+.agency-unit-table td {
+    padding: 20px;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.agency-unit-table img {
+    max-width: 120px;
+    height: auto;
+}
+
+.unit-cell {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+.unit-divider {
+    width: 2px;
+    height: 40px;
+    background: #ffffff;
+    opacity: 0.7;
+}
+
+.audio-section {
+    margin-top: 30px;
+    text-align: center;
+}
+
+.audio-section audio {
+    margin: 0 10px;
+}
+
+.divider-column {
+    width: 2px;
+    background: #ffffff;
+    opacity: 0.7;
+    padding: 0 !important;
+}
+
+.agency-unit-table th.divider-column,
+.agency-unit-table td.divider-column {
+    background: #ffffff;
+    opacity: 0.7;
+}
+
+.agency-unit-table td:first-child {
+    position: relative;
+}
+
+.agency-unit-table td:first-child::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 140px; /* 比原图稍大 */
+    height: 60px; /* 比原图稍大 */
+    background: url('./images/COSMIC_PRODUCTION_Logo.webp') no-repeat center center;
+    background-size: contain;
+    filter: brightness(0) invert(1) opacity(0.8); /* 白色且透明 */
+    transform: translate(-50%, -50%) scale(0.9); /* 居中并放大 */
+    z-index: -1; /* 在原图后面 */
+}
+
+.agency-unit-table td:first-child img {
+    position: relative;
+    z-index: 1; /* 确保原图在前景 */
 }

@@ -264,6 +264,35 @@ document.addEventListener('DOMContentLoaded', function() {
     const scrollLeftBtn = document.querySelector('.scroll-left');
     const scrollRightBtn = document.querySelector('.scroll-right');
     
+        function updateArrowVisibility() {
+        if (!tabHeaders || !scrollLeftBtn || !scrollRightBtn) return;
+        
+        // 检查是否滚动到最左
+        if (tabHeaders.scrollLeft <= 10) {
+            scrollLeftBtn.style.opacity = '0.3';
+            scrollLeftBtn.style.pointerEvents = 'none';
+        } else {
+            scrollLeftBtn.style.opacity = '1';
+            scrollLeftBtn.style.pointerEvents = 'auto';
+        }
+        
+        // 检查是否滚动到最右
+        const maxScroll = tabHeaders.scrollWidth - tabHeaders.clientWidth;
+        if (tabHeaders.scrollLeft >= maxScroll - 10) {
+            scrollRightBtn.style.opacity = '0.3';
+            scrollRightBtn.style.pointerEvents = 'none';
+        } else {
+            scrollRightBtn.style.opacity = '1';
+            scrollRightBtn.style.pointerEvents = 'auto';
+        }
+    }
+    
+    // 初始检查
+    updateArrowVisibility();
+    
+    // 监听滚动
+    tabHeaders.addEventListener('scroll', updateArrowVisibility);
+
     scrollRightBtn.addEventListener('click', function() {
         tabHeaders.scrollBy({ left: 200, behavior: 'smooth' });
     });
@@ -284,3 +313,82 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 });
+
+// 音频互斥播放（全局变量）
+let currentPlayingAudio = null;
+
+function initAudioPlayers() {
+    const audioPlayers = document.querySelectorAll('audio');
+    
+    audioPlayers.forEach(audio => {
+        audio.removeEventListener('play', handleAudioPlay);
+        audio.removeEventListener('pause', handleAudioPause);
+        audio.removeEventListener('ended', handleAudioEnded);
+        
+        audio.addEventListener('play', handleAudioPlay);
+        audio.addEventListener('pause', handleAudioPause);
+        audio.addEventListener('ended', handleAudioEnded);
+    });
+}
+
+//only one voice plays 
+function handleAudioPlay() {
+    if (currentPlayingAudio && currentPlayingAudio !== this) {
+        currentPlayingAudio.pause();
+    }
+    currentPlayingAudio = this;
+}
+
+function handleAudioPause() {
+    if (currentPlayingAudio === this) {
+        currentPlayingAudio = null;
+    }
+}
+
+function handleAudioEnded() {
+    if (currentPlayingAudio === this) {
+        currentPlayingAudio = null;
+    }
+}
+
+function render() {
+    let hash = location.hash.slice(1) || 'home'; 
+    if (!routes[hash]) {
+        hash = 'home'; 
+    }
+
+    contentArea.innerHTML = routes[hash];
+
+    navLinks.forEach(link => {
+        if (link.getAttribute('href') === '#' + hash) {
+            link.classList.add('active');
+        } else {
+            link.classList.remove('active');
+        }
+    });
+
+    setTimeout(() => {
+        initAudioPlayers();
+        if (hash !== 'about' && currentPlayingAudio) {
+            currentPlayingAudio.pause();
+            currentPlayingAudio.currentTime = 0;
+            currentPlayingAudio = null;
+        }
+    }, 100);
+
+    if (hash === 'comment') {
+        const footer = document.getElementById('duration-timer-footer');
+        if (footer) {
+            if (durationTimerInstance) {
+                durationTimerInstance.stop();
+            }
+            durationTimerInstance = new DurationTimer(footer);
+            durationTimerInstance.start();
+        }
+    } else {
+        if (durationTimerInstance) {
+            durationTimerInstance.stop();
+            durationTimerInstance = null;
+        }
+    }
+}
