@@ -1,0 +1,16 @@
+{
+  "name": "spa_test",
+  "version": "1.0.0",
+  "description": "",
+  "main": "comment.js",
+  "scripts": {
+  "compile": "tsc"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "typescript": "^5.9.3"
+  }
+}
