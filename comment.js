@@ -1,22 +1,4 @@
 function processform() {
-    const emailContent = document.getElementById("new-email").value;
-    const email = document.getElementById("new-email");
-    const comment = document.getElementById("new-comment").value;
-    const colorRadios = document.querySelectorAll("input[name=new-color]:checked");
-
-    if (!emailContent || !email.checkValidity()) {
-        alert("Please Input Valid Email!");
-        return; 
-    }
-    if (!comment.trim()) {
-        alert("Please Fill Your Comment!");
-        return;
-    }
-    if (colorRadios.length === 0) {
-        alert("Please Select a Color!");
-        return;
-    }
-    
     // set up a new element
     let newComment = document.createElement("div");
     let element = '<div><svg height="100" width="100"><circle cx="50" cy="50" r="40"></svg></div><div><h5></h5><p></p></div>';
@@ -54,33 +36,156 @@ function autoFillComment(textarea) {
     }
 }
 
-function loadfile(){
-    fetch("http://127.0.0.1:8080/user_input.json") // or absolute address http://127.0.0.1:8080/lab_04_file.txt
-      .then(response => response.json())
-      .then(data => {
-        document.getElementById("new-email").value = data.email;
-        document.getElementById("new-comment").value = data.comment;
+function savefile() {
+    const emailContent = document.getElementById("new-email").value;
+    const email = document.getElementById("new-email");
+    const comment = document.getElementById("new-comment").value;
+
+
+    if (!emailContent || !email.checkValidity()) {
+        alert("Please Input Valid Email!");
+        return; 
+    }
+    if (!comment.trim()) {
+        alert("Please Fill Your Comment!");
+        return;
+    }
+
+    const colorRadios = document.querySelectorAll("input[name=new-color]:checked");
+    if (colorRadios.length === 0) {
+        alert("Please Select a Color!");
+        return;
+    }
+
+    const colorSelected = document.querySelectorAll("input[name=new-color]:checked")[0].value;
+
+    const newComment = {
+        email: emailContent,
+        comment: comment,
+        color: colorSelected
+    };
+
+    fetch("http://127.0.0.1:8081/user_input.json")
+      .then(response => {
+          if (!response.ok) throw new Error('File not found');
+          return response.json();
       })
       .catch(error => {
-        console.error("Error fetching data:", error);
+          // 如果文件不存在，返回空数组
+          console.log('创建新的评论文件');
+          return [];
+      })
+      .then(existingComments => {
+          // 确保 existingComments 是数组
+          const commentsArray = Array.isArray(existingComments) ? existingComments : [existingComments];
+          
+          // 添加新评论到数组
+          commentsArray.push(newComment);
+          
+          console.log('📝 所有评论:', commentsArray);
+          
+          // 保存更新后的数组
+          return fetch("http://127.0.0.1:8081/user_input.json", {
+              method: "PUT",
+              body: JSON.stringify(commentsArray)
+          });
+      })
+    .then(response => {
+          console.log('Save response status:', response.status);
+          if (response.ok) {
+              console.log('Save successfully');
+              processform();
+          }
+      });
+
+}
+
+function loadAndDisplayComments() {
+    fetch("http://127.0.0.1:8081/user_input.json")
+      .then(response => {
+          if (!response.ok) throw new Error('File not found');
+          return response.json();
+      })
+      .then(commentsData => {
+          console.log('Loaded comments:', commentsData);
+          
+          // 清空现有评论容器
+          const commentsContainer = document.querySelector("#comments");
+          commentsContainer.innerHTML = '';
+
+          const staticComment = document.createElement("div");
+          staticComment.className = "d-flex";
+          staticComment.innerHTML = `
+            <div class="flex-shrink-0">
+                <svg height="100" width="100">
+                    <circle cx="50" cy="50" r="40" fill="blue"></circle>
+                </svg>
+            </div>
+            <div class="flex-grow-1">
+                <h5>seeml-mo@link.cuhk.edu.hk</h5>
+                <p>Ensemble Stars!!</p>
+            </div>
+          `;
+          setTimeout(() =>{
+            commentsContainer.appendChild(staticComment);
+          }, 100);
+          
+          // 处理单个或多个评论
+          if (Array.isArray(commentsData)) {
+              setTimeout(() => {
+                  commentsData.forEach((comment, index) => {
+                      renderSingleComment(comment, index + 1);
+                  });
+              }, 100);
+          } else {
+              // 如果是单个评论对象，渲染它
+              setTimeout(() => { 
+                renderSingleComment(commentsData, 1);
+              },100);
+          }
+      })
+      .catch(error => {
+                  const commentsContainer = document.querySelector("#comments");
+          commentsContainer.innerHTML = '';
+
+          const staticComment = document.createElement("div");
+          staticComment.className = "d-flex";
+          staticComment.innerHTML = `
+            <div class="flex-shrink-0">
+                <svg height="100" width="100">
+                    <circle cx="50" cy="50" r="40" fill="blue"></circle>
+                </svg>
+            </div>
+            <div class="flex-grow-1">
+                <h5>seeml-mo@link.cuhk.edu.hk</h5>
+                <p>Ensemble Stars!!</p>
+            </div>
+          `;
+          setTimeout(() =>{
+            commentsContainer.appendChild(staticComment);
+          }, 100);
+          console.log("No existing comments found:", error);
       });
 }
 
+// 渲染单个评论的辅助函数
+function renderSingleComment(commentData, id) {
+    const commentsContainer = document.querySelector("#comments");
+    
+    let newComment = document.createElement("div");
+    let element = '<div><svg height="100" width="100"><circle cx="50" cy="50" r="40"></svg></div><div><h5></h5><p></p></div>';
+    newComment.innerHTML = element;
 
-function savefile(){
-  const textInput = document.getElementById('new-comment');
+    newComment.className = "d-flex";
+    newComment.querySelectorAll("div")[0].className = "flex-shrink-0";
+    newComment.querySelectorAll("div")[1].className = "flex-grow-1";
+    newComment.id = 'c' + id;
 
-  const emailInput = document.getElementById('new-email');
-
-  const data = {
-    email: emailInput.value,
-    comment: textInput.value
-  };
-
-  fetch("http://127.0.0.1:8080/user_input.json", {
-    method:"PUT",
-    body: JSON.stringify(data)
-  });
+    newComment.querySelector("h5").innerHTML = commentData.email || 'No email';
+    newComment.querySelector("p").innerHTML = commentData.comment || 'No comment';
+    newComment.querySelector("circle").setAttribute("fill", commentData.color || 'black');
+    
+    commentsContainer.appendChild(newComment);
 }
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -174,22 +279,29 @@ function changeFontSize(delta) {
     const contentArea = document.querySelector('.content');
     if (!contentArea) return;
     
-    let currentSize = parseInt(window.getComputedStyle(contentArea).fontSize);
-    if (isNaN(currentSize)) {
-        currentSize = 16; 
+    let baseSize = parseFloat(window.getComputedStyle(contentArea).fontSize);
+    if (isNaN(baseSize)) {
+        const pElement = document.querySelector('p');
+        baseSize = parseFloat(window.getComputedStyle(pElement).fontSize);
     }
+    if (isNaN(baseSize)) baseSize = 16;
     
-    let newSize = currentSize + delta;
-    newSize = Math.max(8, Math.min(32, newSize));
+    let newBaseSize = baseSize + delta;
+
+    newBaseSize = Math.max(8, Math.min(32, newBaseSize));
+    
+    contentArea.style.fontSize = newBaseSize + 'px';
     
     const contentElements = contentArea.querySelectorAll('*');
     contentElements.forEach(element => {
-        element.style.fontSize = newSize + 'px';
+        const originalSize = parseFloat(window.getComputedStyle(element).fontSize);
+        if (!isNaN(originalSize)) {
+            const ratio = originalSize / baseSize;
+            element.style.fontSize = (newBaseSize * ratio) + 'px';
+        }
     });
     
-    contentArea.style.fontSize = newSize + 'px';
-    
-    console.log(`Font size: ${newSize}px`);
+    console.log(`baseSize ${baseSize}px adjusted to ${newBaseSize}px`);
 }
 
 function showSpotlightDialog() {
@@ -203,7 +315,7 @@ function showSpotlightDialog() {
             spotlightArea.className = 'spotlight-container';
             
             const title = document.createElement('h5');
-            title.textContent = 'Spotlights';
+            title.textContent = 'Spotlight';
             spotlightArea.appendChild(title);
 
             document.body.appendChild(spotlightArea);

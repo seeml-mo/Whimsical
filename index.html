@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html sytle="font-size: 16px;">
   <head>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="./style.css">
@@ -13,6 +13,10 @@
       <p class="bottom_link"> Click to know more about
         <a href="https://ensemble-stars.jp/characters/tomoe_hiyori"> Tomoe Hiyori</a> 
       </p>
+      <div class="spotlight-container" id="spotlight-area">
+          <h5>Spotlight</h5>
+          <p>The spotlights you add will be shown below.</p>
+      </div>
     <main>
       <div class="container">
         <nav class="navbar navbar-expand-lg sidebar">
@@ -65,7 +69,7 @@
 
                         <div class="character-quote-wrapper">
                   <blockquote>
-                      <p>I'm Hiyori Tomoe from Eden and Eve at COSMIC PRODUCTION! Well, there's no way you don't know who I am...♪ Bringing dazzling smiles and love to all my fans is my greatest happiness and a given as an idol. I promise to provide anyone who comes to see me with the best day ever. Yes, yes, that's a Good Hiyori☆</p>
+                      <h5>I'm Hiyori Tomoe from Eden and Eve at COSMIC PRODUCTION! Well, there's no way you don't know who I am...♪ Bringing dazzling smiles and love to all my fans is my greatest happiness and a given as an idol. I promise to provide anyone who comes to see me with the best day ever. Yes, yes, that's a Good Hiyori☆</h5>
                   </blockquote>
                   <cite class="character-quote-audio character-quote-audio-self">
                     <aside>
@@ -85,7 +89,7 @@
               </div>
                         <div class="character-quote-wrapper">
                 <blockquote>
-                    <p>Ohii-san's introduction, huh. Ohii-san and I met at the idol training school, Reimei Academy, and he's the one who picked me up and saved me from rotting away in a garbage dump. He's free-spirited and prideful, but if it weren't for him, I wouldn't be here... when I think about it, his bits of selfishness can be kinda cute. Haha, saying that might make him angry at me though♪</p>
+                    <h5>Ohii-san's introduction, huh. Ohii-san and I met at the idol training school, Reimei Academy, and he's the one who picked me up and saved me from rotting away in a garbage dump. He's free-spirited and prideful, but if it weren't for him, I wouldn't be here... when I think about it, his bits of selfishness can be kinda cute. Haha, saying that might make him angry at me though♪</h5>
                 </blockquote>
                 <cite class="character-quote-audio character-quote-audio-friend">
                   <aside>  
@@ -192,7 +196,7 @@
             <p>Good hiyori!!!</p>
           </header>
           <section class="about-section ">
-            <h1>Idol Career</h1>
+            <h3>Idol Career</h3>
           
     <table class="agency-unit-table">
       <thead>
@@ -248,15 +252,6 @@
           <div class="container-grid-container">
             <div id="comments"> 
               <div id="c1001" class="d-flex"> <!-- flex layout -->
-                <div class="flex-shrink-0"> <!-- disallow div to shrink when page gets smaller -->
-                  <svg height="100" width="100">
-                    <circle cx="50" cy="50" r="40" fill="green"></circle>
-                  </svg>
-                </div>
-                <div class="flex-grow-1"> <!-- allow div to grow and take up all space -->
-                  <h5>seeml-mo@link.cuhk.edu.hk</h5>
-                  <p>Ensemble Stars!!</p>
-                </div>
               </div>
             </div>
             <form>
@@ -284,10 +279,7 @@
                   <input class="form-check-input" type="radio" name="new-color" id="new-color-blue" value="blue">
                   <label class="form-check-label" for="new-color-blue">Blue</label>
               </div>
-                <!-- TODO: Add more choices here with div/input/label -->
-              <button type="button" class="btn btn-primary" onclick="processform();">Add comment</button>
-              <button type="button" class="btn btn-primary" onclick="loadfile()">Load File</button>
-              <button type="button" class="btn btn-primary" onclick="savefile()">Save File</button>
+              <button type="button" class="btn btn-primary" onclick="savefile();">Add comment</button>
             </form>
             <div id="comments-container">
               <!-- New comments will be shown here -->
@@ -319,6 +311,9 @@
         });
 
            if (hash === 'comment') {
+                setTimeout(() => {
+                  loadAndDisplayComments();
+                }, 100);
               const footer = document.getElementById('duration-timer-footer');
               if (footer) {
                 if (durationTimerInstance) {
