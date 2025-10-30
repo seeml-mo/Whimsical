@@ -65,7 +65,7 @@ function savefile() {
         color: colorSelected
     };
 
-    fetch("http://127.0.0.1:8081/user_input.json")
+    fetch("/api/comments")
       .then(response => {
           if (!response.ok) throw new Error('File not found');
           return response.json();
@@ -85,8 +85,9 @@ function savefile() {
           console.log('📝 所有评论:', commentsArray);
           
           // 保存更新后的数组
-          return fetch("http://127.0.0.1:8081/user_input.json", {
-              method: "PUT",
+          return fetch("/api/comments", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
               body: JSON.stringify(commentsArray)
           });
       })
@@ -101,7 +102,7 @@ function savefile() {
 }
 
 function loadAndDisplayComments() {
-    fetch("http://127.0.0.1:8081/user_input.json")
+    fetch("/api/comments")
       .then(response => {
           if (!response.ok) throw new Error('File not found');
           return response.json();
@@ -584,3 +585,4 @@ document.addEventListener('DOMContentLoaded', function() {
     //wait for DOM
     setTimeout(updateTabArrows, 100);
 });
+
