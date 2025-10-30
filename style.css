@@ -255,7 +255,7 @@ form {
     border-radius: 8px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.8);
     z-index: 1000;
-    max-height: 100px;
+    max-height: 100px !important;
     overflow-y: auto;
     color: white;
 }
@@ -265,8 +265,9 @@ form {
     border-left: 4px solid #70b312;
     padding: 8px 12px;
     margin: 8px 0;
-    max-height: 100px;
+    max-height: 100px !important;
     border-radius: 4px;
+    height: auto; 
     overflow-y: auto;
     font-size: 14px;
 }
@@ -590,5 +591,6 @@ footer {
     overflow-y: auto;
 
 }
+
 
 
