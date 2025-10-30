@@ -265,7 +265,9 @@ form {
     border-left: 4px solid #70b312;
     padding: 8px 12px;
     margin: 8px 0;
+    max-height: 250px;
     border-radius: 4px;
+    overflow-y: auto;
     font-size: 14px;
 }
 
@@ -588,3 +590,4 @@ footer {
     overflow-y: auto;
 
 }
+
