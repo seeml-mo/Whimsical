@@ -97,7 +97,6 @@ function savefile() {
               processform();
           }
       });
-
 }
 
 function loadAndDisplayComments() {
@@ -584,3 +583,4 @@ document.addEventListener('DOMContentLoaded', function() {
     //wait for DOM
     setTimeout(updateTabArrows, 100);
 });
+
